@@ -67,7 +67,7 @@ public class Window {
         });
 
         helpScreen = new JFrame("How to play!");
-        helpScreen.setSize(550, 250);
+        helpScreen.setSize(610, 260);
         helpScreen.setResizable(false);
         helpScreen.setLocationRelativeTo(window);
         helpScreen.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -169,7 +169,7 @@ public class Window {
      * Moves the brick backwards
      * @param j the index of pressed button in list
      * @param i how many steps back it should move
-     * @param the pressed brick
+     * @param brick the pressed brick
      */
     private void moveBack(int j, int i, Brick brick) {
         bricks.get(j - i).setText(brick.getText());
@@ -182,7 +182,7 @@ public class Window {
      * Moves the brick forwards
      * @param j the index of pressed button in list
      * @param i how many steps back it should move
-     * @param the pressed brick
+     * @param brick the pressed brick
      */
     private void moveForward(int j, int i, Brick brick) {
         bricks.get(j + i).setText(brick.getText());
