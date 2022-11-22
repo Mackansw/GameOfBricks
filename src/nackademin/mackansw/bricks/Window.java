@@ -25,7 +25,8 @@ public class Window {
     private List<Brick> bricks = new ArrayList<>();
     private List<Brick> solved = new ArrayList<>();
 
-    private Font gamefont = new Font(Font.MONOSPACED, Font.BOLD, 14);
+    private final Font gameTextFont = new Font(Font.MONOSPACED, Font.BOLD, 15);
+    private final Font gameBrickFont = new Font(Font.MONOSPACED, Font.BOLD, 21);
 
     private boolean playing = false;
 
@@ -51,7 +52,7 @@ public class Window {
         southPane.add(newGame, new BorderLayout().CENTER);
         newGame.setBackground(Color.darkGray);
         newGame.setForeground(Color.white);
-        newGame.setFont(gamefont);
+        newGame.setFont(gameTextFont);
         newGame.addActionListener(e -> {
             shuffle();
         });
@@ -60,14 +61,14 @@ public class Window {
         southPane.add(helpButton, new BorderLayout().EAST);
         helpButton.setBackground(Color.darkGray);
         helpButton.setForeground(Color.white);
-        helpButton.setFont(gamefont);
+        helpButton.setFont(gameTextFont);
         helpButton.setPreferredSize(new Dimension(120, 60));
         helpButton.addActionListener(e -> {
             helpScreen.setVisible(true);
         });
 
         helpScreen = new JFrame("How to play!");
-        helpScreen.setSize(610, 260);
+        helpScreen.setSize(570, 270);
         helpScreen.setResizable(false);
         helpScreen.setLocationRelativeTo(window);
         helpScreen.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -81,13 +82,13 @@ public class Window {
         textarea.setBackground(Color.darkGray);
         textarea.setForeground(Color.white);
         textarea.setEditable(false);
-        textarea.setFont(gamefont);
+        textarea.setFont(gameTextFont);
 
         exit = new JButton("OK");
         helpScreen.add(exit, new BorderLayout().SOUTH);
         exit.setForeground(Color.white);
         exit.setBackground(Color.gray);
-        exit.setFont(gamefont);
+        exit.setFont(gameTextFont);
         exit.setPreferredSize(new Dimension(40,40));
         exit.addActionListener(e -> {
             helpScreen.setVisible(false);
@@ -219,7 +220,7 @@ public class Window {
     private void generateBricks() {
         for (int i = 1; 16 > i; i++) {
             gameBrick = new Brick(i);
-            gameBrick.setFont(gamefont);
+            gameBrick.setFont(gameBrickFont);
             gamePanel.add(gameBrick);
             bricks.add(gameBrick);
             solved.add(gameBrick);
@@ -227,7 +228,7 @@ public class Window {
 
         //Adds empty after the gamebricks
         empty.setVisible(false);
-        empty.setFont(gamefont);
+        empty.setFont(gameTextFont);
         gamePanel.add(empty);
         bricks.add(empty);
         solved.add(empty);
@@ -253,14 +254,14 @@ public class Window {
         for (int i = 0; i < bricks.size(); i++) {
             gameBrick = new Brick(Integer.valueOf(bricks.get(i).getText()));
             setActionOf(gameBrick);
-            gameBrick.setFont(gamefont);
+            gameBrick.setFont(gameBrickFont);
             gamePanel.add(gameBrick);
             bricks.set(i, gameBrick);
         }
 
         //adds empty and sets action
         empty.setVisible(false);
-        empty.setFont(gamefont);
+        empty.setFont(gameTextFont);
         setActionOf(empty);
         gamePanel.add(empty);
         bricks.add(empty);
